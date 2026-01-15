@@ -3,200 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>復原行動 Re-Co - 專案介紹</title>
+    <title>復原行動 Re-Co !</title>
     <style>
-        /* --- 字體設定 (載入你上傳的獅尾圓體) --- */
+        /* --- 1. 字體設定 (請確認你的 ttf 檔名是否正確) --- */
         @font-face {
             font-family: 'SweiGothicCJKtc';
-            /* 這裡假設你的字體檔名是 SweiGothicCJKtc-Regular.ttf */
-            /* 如果檔名不同，請記得回來改這裡 */
             src: url('SweiGothicCJKtc-Regular.ttf') format('truetype');
             font-weight: normal;
-            font-style: normal;
         }
-
         @font-face {
             font-family: 'SweiGothicCJKtc';
-            /* 這裡設定粗體檔名，如果有粗體檔請上傳並改名，沒有的話瀏覽器會自己模擬 */
             src: url('SweiGothicCJKtc-Bold.ttf') format('truetype');
             font-weight: bold;
-            font-style: normal;
         }
 
-        /* --- 基礎設定 --- */
-        :root {
-            /* 調整成較為溫暖修復的色調，或維持原本的水藍色？這邊先維持原本的清透感 */
-            --primary-color: #4facfe;
-            --secondary-color: #00f2fe;
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --text-main: #333;
-            --text-white: #fff;
-        }
-
+        /* --- 2. 整體版面設定 --- */
         body {
             margin: 0;
             padding: 0;
-            /* 套用獅尾圓體 */
-            font-family: 'SweiGothicCJKtc', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            color: var(--text-main);
-            overflow-x: hidden;
+            font-family: 'SweiGothicCJKtc', sans-serif;
+            background-color: #ffffff; /* 純白背景 */
+            color: #000000; /* 純黑文字 */
+            display: flex;
+            justify-content: center; /* 讓內容在畫面中間 */
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 90%;
+            max-width: 1200px; /* 限制最大寬度，大螢幕才不會散太開 */
+            padding-top: 80px; /* 上方留白 */
+            padding-bottom: 60px;
         }
 
-        /* --- 玻璃擬態卡片 --- */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            padding: 40px;
-            margin-bottom: 30px;
-        }
-
-        /* --- Hero Section --- */
+        /* --- 3. 頭部區域 (標題+按鈕) --- */
         header {
-            text-align: center;
-            padding: 60px 20px;
+            text-align: left; /* 靠左對齊 */
+            margin-bottom: 60px;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem; /* 標題大字 */
+            margin: 0 0 15px 0;
             font-weight: bold;
-            margin-bottom: 10px;
-            background: -webkit-linear-gradient(45deg, #0984e3, #e84393);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            padding-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        p.subtitle {
-            font-size: 1.5rem;
-            color: #555;
-            margin-bottom: 30px;
-            font-weight: bold;
+        .subtitle {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: normal;
         }
 
-        /* --- 按鈕 --- */
+        /* --- 按鈕樣式 (仿照你的薄荷綠漸層) --- */
         .btn-download {
             display: inline-block;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            /* 薄荷綠漸層 */
+            background: linear-gradient(90deg, #cef5e8 0%, #a2e8da 100%);
+            color: #333;
+            padding: 12px 80px; /* 寬一點的按鈕 */
+            border-radius: 8px; /* 圓角矩形 */
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+            border: none;
         }
 
         .btn-download:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6);
+            opacity: 0.8; /* 滑鼠移過去稍微變透明 */
         }
 
-        /* --- 內容排版 --- */
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+        /* --- 4. 下方兩個大區塊 --- */
+        .content-area {
+            display: flex;
+            gap: 40px; /* 兩個框框中間的距離 */
+            justify-content: space-between;
         }
 
-        .text-content h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #2d3436;
-            font-weight: bold;
-        }
-
-        .text-content p {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #636e72;
-        }
-
-        .img-placeholder {
-            width: 100%;
-            height: 300px;
-            background-color: rgba(255,255,255,0.5);
-            border-radius: 20px;
+        .card {
+            flex: 1; /* 兩個框框平均分配寬度 */
+            height: 450px; /* 設定高度 */
+            border-radius: 20px; /* 圓角 */
+            /* 關鍵：上方白色 -> 下方淡藍色的漸層 */
+            background: linear-gradient(180deg, #ffffff 30%, #bde6ff 100%);
+            border: 1px solid #f0f0f0; /* 很淡的邊框 */
+            
+            /* 讓裡面的圖片置中 */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
-            border: 2px dashed #aaa;
+            overflow: hidden; /* 防止圖片超出圓角 */
         }
 
+        /* 這是預留給你放圖片的設定 */
+        .card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* --- 手機版適配 (螢幕變窄時) --- */
         @media (max-width: 768px) {
-            .features { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            font-size: 0.9rem;
+            .content-area {
+                flex-direction: column; /* 變直向排列 */
+            }
+            .card {
+                height: 300px; /* 手機上高度縮小一點 */
+            }
+            h1 { font-size: 2rem; }
+            .btn-download { width: 100%; text-align: center; padding: 12px 0; } /* 手機上按鈕滿版 */
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header class="glass-card">
-            <h1>復原行動 Re-Co</h1>
+        <header>
+            <h1>復原行動 Re-Co !</h1>
             <p class="subtitle">針對 BFRB 行為設計的療癒系互動 App</p>
             
-            <a href="#" class="btn-download">📥 下載 Android APK</a>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">版本 v1.0 | 適用於 Android 裝置</p>
+            <a href="#" class="btn-download">下載APK</a>
         </header>
 
-        <section class="glass-card">
-            <div class="features">
-                <div class="text-content">
-                    <h2>虛實整合的修復體驗</h2>
-                    <p>
-                        「Re-Co」結合了實體的<strong>「捏捏手機座」</strong>與數位互動。
-                        當你感到焦慮時，透過按壓實體裝置，App 中的互動生物將給予溫柔回饋，
-                        協助你找回內心的平靜。
-                    </p>
+        <div class="content-area">
+            <div class="card">
                 </div>
-                <div class="img-placeholder">
-                    <span>[請在此放入實體產品照片]</span>
-                </div>
-            </div>
-        </section>
 
-        <section class="glass-card">
-            <div class="features">
-                <div class="img-placeholder">
-                    <span>[請在此放入 App 截圖]</span>
+            <div class="card">
                 </div>
-                <div class="text-content">
-                    <h2>紀錄與復原的旅程</h2>
-                    <p>
-                        使用 Flutter 開發的流暢體驗。你可以自定義你的虛擬夥伴，
-                        記錄你的情緒起伏。讓焦慮轉化為指尖的溫柔互動，
-                        陪伴你完成每一次的復原行動。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Re-Co Project. 台科大商業設計系畢業製作.</p>
-        </footer>
+        </div>
     </div>
 
 </body>
